@@ -1,0 +1,2079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek | Professional Hacker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #ffffff;
+            /* New Red Theme Colors */
+            --accent: #FF0000; /* Vibrant Red */
+            --accent-light: #FF3333;
+            --accent-dark: #B30000;
+            --gray: #1a1a1a;
+            --light-gray: #2a2a2a;
+        }
+
+        html {
+            /* Scroll behavior is managed by JS router (window.scrollTo) now */
+            scroll-behavior: auto; 
+        }
+
+        body {
+            /* ADDED for smooth scrolling between sections */
+            scroll-behavior: smooth;
+            
+            /* Darker, subtle green-tinged background */
+            background: linear-gradient(135deg, #000000 0%, #000000 50%, #000000 100%);
+            color: var(--secondary);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Particles Container */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        /* The dynamically loaded section will now be here */
+        section {
+            padding: 120px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2; /* ADDED to ensure content is above the FIXED video background (z-index: 0) */
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        h1 {
+            font-size: 5rem;
+            margin-bottom: 25px;
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), #FF4D4D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* MODIFICATION: Added black text stroke/shadow for border effect */
+            -webkit-text-stroke: 1.5px black;
+            text-stroke: 1.5px black;
+            text-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        h2 {
+            font-size: 4rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        h2.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 150px;
+            height: 5px;
+            /* Red Accent */
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            border-radius: 5px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), var(--accent-dark));
+            color: var(--secondary);
+            border: none;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            /* Red Accent Shadow */
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+            cursor: pointer;
+        }
+        
+        /* NEW: Button Group Styles */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px;
+            padding-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-navigation .btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .page-navigation .btn-prev {
+            margin-right: auto;
+        }
+        
+        .page-navigation .btn-next {
+            margin-left: auto;
+        }
+
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent-dark), var(--accent));
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            /* Red Accent Shadow */
+            box-shadow: 0 15px 25px rgba(255, 0, 0, 0.4);
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .accent {
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), #FF4D4D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* MODIFICATION: Added black text stroke/shadow for border effect */
+            -webkit-text-stroke: 1.5px black;
+            text-stroke: 1.5px black;
+        }
+
+        /* Glassmorphism Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 0;
+            z-index: 1000;
+            /* MODIFIED: Darker, more opaque black glass */
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            /* Red Accent Border */
+            border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 0;
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), #FF4D4D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-left: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 40px;
+        }
+
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            /* Red Accent */
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section with Advanced Gradient */
+        #home {
+            position: relative;
+            overflow: hidden;
+            /* background is now managed by the persistent body/video background */
+        }
+        
+        /* NEW: Video Background Styles - MOVED TO PERSISTENT LAYER */
+        .video-background {
+            position: fixed; /* CHANGED to FIXED for persistence */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0; /* Ensure it's behind the content (z-index: 2) */
+            filter: none;
+            opacity: 1;
+            transition: all 1s ease;
+            /* Initially hidden, JS controls visibility on the '/' route */
+            display: none; 
+        }
+
+        /* FIX: Gradient Overlay for Smooth Blend */
+        .video-background::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px; /* Adjust height for fade length */
+            /* This gradient fades from transparent black to solid black (body background: #000000) */
+            background: linear-gradient(to top, #000000 0%, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0) 100%);
+            z-index: 1; /* Place gradient above the video but below the content */
+            pointer-events: none; /* Allows clicks to pass through to elements beneath */
+        }
+
+        #hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* NEW: Play Overlay for Unmute Interaction - MOVED TO PERSISTENT LAYER */
+        #play-overlay {
+            position: fixed; /* CHANGED to FIXED for persistence */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* MODIFIED: More opaque black background */
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 100; /* Above all content */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            cursor: pointer;
+            /* Initially hidden, JS controls visibility on the '/' route */
+            display: none; 
+        }
+
+        #play-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        #play-overlay h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            opacity: 1;
+            transform: none;
+        }
+        
+        #play-overlay .btn {
+            z-index: 101;
+            padding: 20px 40px;
+            font-size: 1.2rem;
+        }
+        
+        #play-overlay h2::after {
+            content: none;
+        }
+
+
+        /* NEW: Volume Toggle Button - MOVED TO PERSISTENT LAYER */
+        #volume-toggle {
+            position: fixed; /* CHANGED to FIXED for persistence */
+            bottom: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 0, 0, 0.5); /* Red Accent */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 0, 0, 0.4);
+            /* HIDDEN initially - managed by JS, hidden on non-home pages */
+            opacity: 0; 
+            visibility: hidden;
+            display: none; /* Added to be explicitly hidden by default */
+        }
+
+        #volume-toggle:hover {
+            background: rgba(255, 0, 0, 0.8);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .hero-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-content h1 {
+            font-size: 6rem;
+            margin-bottom: 30px;
+            line-height: 1;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 25px;
+        }
+
+        /* Floating shapes can also be moved out to be persistent */
+        .floating-shapes {
+            position: fixed; /* CHANGED to FIXED for persistence */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            display: none; /* Added to be explicitly hidden by default */
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), #FF4D4D);
+            opacity: 0;
+            filter: blur(40px);
+            animation: float 20s infinite linear;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+
+        .shape:nth-child(4) {
+            width: 350px;
+            height: 350px;
+            top: 30%;
+            left: 70%;
+            animation-delay: 15s;
+        }
+
+        /* Glass Cards for Services */
+        #services {
+            /* background is now managed by the persistent body/video background */
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            /* MODIFIED: Less transparent, more opaque black glass */
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            /* Red Accent Border */
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            padding: 50px 40px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            /* Red Accent */
+            background: linear-gradient(180deg, var(--accent), var(--accent-dark));
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            /* Slightly Lighter Dark Glass on Hover */
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .service-card:hover::before {
+            width: 100%;
+            opacity: 0.05; /* More subtle hover fill */
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), #FF4D4D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* Products Section */
+        #products {
+            /* background is now managed by the persistent body/video background */
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            /* MODIFIED: Less transparent, more opaque black glass */
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            /* Red Accent Border */
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-header {
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            /* MODIFIED: Slightly darker header background */
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), var(--accent-dark));
+            color: var(--secondary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .product-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        /* Updated Icon Gradients for Dark Red Theme */
+        .bronze .product-icon {
+            background: linear-gradient(45deg, #7c5c3e, #b08d57); /* Darker Bronze */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .silver .product-icon {
+            background: linear-gradient(45deg, #a0a0a0, #c0c0c0); /* Darker Silver */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold .product-icon {
+            background: linear-gradient(45deg, #ccae52, #ffd700); /* Darker Gold */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .product-title {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .product-period {
+            color: #aaa;
+            font-size: 1rem;
+        }
+
+        .product-features {
+            padding: 40px 30px;
+            /* MODIFIED: Slightly darker features background */
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .product-features ul {
+            list-style: none;
+        }
+
+        .product-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+
+        .product-features i {
+            margin-right: 12px;
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), #FF4D4D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .product-cta {
+            padding: 30px;
+            /* MODIFIED: Slightly darker CTA background */
+            background: rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        .product-btn {
+            display: inline-block;
+            padding: 15px 0;
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), var(--accent-dark));
+            color: var(--secondary);
+            border: none;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            width: 100%;
+            /* Red Accent Shadow */
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .product-btn:hover {
+            transform: translateY(-5px);
+            /* Red Accent Shadow */
+            box-shadow: 0 15px 25px rgba(255, 0, 0, 0.4);
+        }
+
+        /* About Section */
+        #about {
+            /* background is now managed by the persistent body/video background */
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text {
+            padding-right: 20px;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .about-text.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-image {
+            position: relative;
+            height: 600px;
+            /* MODIFIED: Less transparent, more opaque black glass */
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            /* Red Accent Border */
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+         .about-image img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             border-radius: 0%;
+        }
+
+        .about-image.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Red Accent Overlay */           
+            z-index: 1;
+        }
+
+        .skills {
+            margin-top: 40px;
+        }
+
+        .skill {
+            margin-bottom: 25px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            /* Red Accent */
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            border-radius: 10px;
+            width: 0; /* Initial width for animation */
+            transition: width 1.5s ease; /* Transition property for smooth animation */
+            /* Red Accent Shadow */
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        /* Reviews Section */
+        #reviews {
+            /* background is now managed by the persistent body/video background */
+        }
+
+        .reviews-container {
+            position: relative;
+        }
+
+        .reviews-slider {
+            display: flex;
+            overflow: hidden;
+            gap: 40px;
+            padding: 20px 0;
+        }
+
+        .review-card {
+            min-width: 400px;
+            /* MODIFIED: Less transparent, more opaque black glass */
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            /* Red Accent Border */
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .review-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .reviewer {
+            display: flex;
+            align-items: center;
+        }
+
+        .reviewer-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), var(--accent-dark));
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .reviewer-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .reviewer-info p {
+            font-size: 1rem;
+            color: #aaa;
+            margin: 0;
+        }
+
+        .stars {
+            color: gold;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            /* background is now managed by the persistent body/video background */
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .contact-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            /* MODIFIED: Less transparent, more opaque black glass */
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            /* Red Accent Border */
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 25px;
+            font-size: 1.8rem;
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), #FF4D4D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-form {
+            /* MODIFIED: Less transparent, more opaque black glass */
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            /* Red Accent Border */
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            padding: 50px 40px;
+            border-radius: 25px;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .contact-form.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            /* MODIFIED: Darker form control background */
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--secondary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            /* Red Accent Shadow */
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
+
+        textarea.form-control {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366; /* Keeping standard WhatsApp color */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            /* MODIFIED: Darker, more opaque footer */
+            background: rgba(0, 0, 0, 0.95);
+            padding: 80px 0 40px;
+            /* Red Accent Border */
+            border-top: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            /* Red Accent */
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            /* MODIFIED: Darker social link background */
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-link:hover {
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), var(--accent-dark));
+            color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg) scale(1.1);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg) scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 4.5rem;
+            }
+
+            h2 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 4rem;
+            }
+
+            h2 {
+                font-size: 3rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-text {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                /* MODIFIED: Darker Mobile Menu */
+                background: rgba(0, 0, 0, 0.98);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 80px;
+                transition: all 0.5s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            
+            #play-overlay h2 {
+                font-size: 2rem;
+                text-align: center;
+                line-height: 1.2;
+                margin: 0 20px 30px;
+            }
+
+            .shape {
+                display: none;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .page-navigation {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .page-navigation .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 100px 20px;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .service-card {
+                padding: 40px 30px;
+            }
+
+            .contact-form {
+                padding: 40px 30px;
+            }
+
+            .products-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <div id="play-overlay">
+        <h2>Experience the world of Abhishek Sharma</h2>
+        <button id="play-btn" class="btn"><i class="fas fa-play"></i> Enter Site with Sound</button>
+    </div>
+    <div class="video-background">
+        <video id="hero-video" autoplay loop muted playsinline poster="assets/video-fallback.jpg">
+            <source src="assets/hero-video.mp4" type="video/mp4">
+            <source src="assets/hero-video.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div id="volume-toggle" title="Toggle Audio (Muted)">
+        <i class="fas fa-volume-mute"></i>
+    </div>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <a href="https://wa.me/919113150390?text=Hi%20Abhishek%2C%20I%20visited%20your%20website%20and%20would%20like%20to%20discuss%20a%20project." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#/" class="logo">whoisabhi<span>.cs</span></a>
+            <ul class="nav-links">
+                <li><a href="#/">Home</a></li>
+                <li><a href="#/services">Services</a></li>
+                <li><a href="#/products">Products</a></li>
+                <li><a href="#/about">About</a></li>
+                <li><a href="#/reviews">Reviews</a></li>
+                <li><a href="#/contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main id="app-content"></main>
+
+    <div id="footer-container" style="display: none;">
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <h3>Abhishek sharma</h3>
+                        <p>Creating next-level digital experiences that push boundaries. Let's build the future together.</p>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/abhishek.sharma.212991" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/whoisxbhi?igsh=MTJxa3VoazF4NHllOA==" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#/">Home</a></li>
+                            <li><a href="#/services">Services</a></li>
+                            <li><a href="#/products">Products</a></li>
+                            <li><a href="#/about">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Products</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Bronze Package</a></li>
+                            <li><a href="#">Silver Package</a></li>
+                            <li><a href="#">Gold Package</a></li>
+                            <li><a href="#">Custom Solutions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contact</h3>
+                        <ul class="footer-links">
+                            <li><a href="tel:+919113150390">+91 91131 50390</a></li>
+                            <li><a href="https://wa.me/919113150390">WhatsApp: +91 91131 50390</a></li>
+                            <li><a href="mailto:abhishekkrsharma1210@gmail.com">abhishekkrsharma1210@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2023 Abhishek. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        // Particles.js Configuration (Updated to Red)
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: ["#FF0000", "#FF4D4D"] /* Red Colors */
+                },
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#000000"
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#FF0000", /* Red Line Color */
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "grab"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 0.5
+                        }
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+
+        // WhatsApp Integration Functions (Keep these global)
+        function redirectToWhatsApp(packageName = '') {
+            const phoneNumber = '9191150390';
+            let message = 'Hi Abhishek, I visited your website and would like to discuss a project.';
+            
+            if (packageName) {
+                message = `Hi Abhishek, I'm interested in the ${packageName}. Can you provide more details?`;
+            }
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+        }
+
+        function submitContactForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            const phoneNumber = '9191150390';
+            const whatsappMessage = `New Contact Form Submission:%0A%0AName: ${name}%0AEmail: ${email}%0ASubject: ${subject}%0AMessage: ${message}`;
+            
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+            
+            return false; // Prevent default form submission
+        }
+
+        // Navigation scroll effect (Kept for visual flair, though smooth scroll is disabled)
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Ensure the mobile menu closes on click
+                navLinks.classList.remove('active'); 
+                
+                // Manually trigger the router on link click to ensure quick navigation
+                // (Though hashchange event usually handles this)
+                router(); 
+            });
+        });
+
+        
+        // ----------------------------------------------------
+        // SPA ROUTING ARCHITECTURE
+        // ----------------------------------------------------
+        
+        const appContent = document.getElementById('app-content');
+        
+        // NEW: Define the order of pages for navigation
+        const pageOrder = ['/', '/services', '/products', '/about', '/reviews', '/contact'];
+        
+        // Helper function to generate navigation buttons
+        function getPageNavigationHTML(currentPath) {
+            const currentIndex = pageOrder.indexOf(currentPath);
+            let prevLink = '';
+            let nextLink = '';
+            
+            // Previous button logic
+            if (currentIndex > 0) {
+                const prevPath = pageOrder[currentIndex - 1];
+                const prevName = prevPath === '/' ? 'Home' : prevPath.slice(1).charAt(0).toUpperCase() + prevPath.slice(2);
+                prevLink = `<a href="#${prevPath}" class="btn btn-prev"><i class="fas fa-arrow-left"></i> Previous: ${prevName}</a>`;
+            }
+            
+            // Next button logic
+            if (currentIndex < pageOrder.length - 1) {
+                const nextPath = pageOrder[currentIndex + 1];
+                const nextName = nextPath.slice(1).charAt(0).toUpperCase() + nextPath.slice(2);
+                nextLink = `<a href="#${nextPath}" class="btn btn-next">Next: ${nextName} <i class="fas fa-arrow-right"></i></a>`;
+            }
+
+            if (prevLink || nextLink) {
+                return `
+                    <div class="container">
+                        <div class="page-navigation">
+                            ${prevLink}
+                            ${nextLink}
+                        </div>
+                    </div>
+                `;
+            }
+            return '';
+        }
+
+        // 1. Content Templates (Inner HTML of the original <section> tags)
+        // NOTE: Video, overlay, and volume toggle elements are REMOVED from the template
+        // as they are now permanent elements in the body.
+        const routes = {
+            '/': `
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Abhishek <span class="accent">Sharma</span></h1>
+                        <p>Developer by passion, Cyber Security by mission — protecting and creating the digital future. Let's build the future together.</p>
+                        <div class="hero-btns">
+                            <a href="#/services" class="btn">Start journey</a>                            
+                        </div>
+                    </div>
+                </div>
+            `,
+            '/services': `
+                <div class="container">
+                    <h2>My <span class="accent">Services</span></h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>Cyber Security Consulting</h3>
+                            <p>Helping individuals and small businesses identify and fix vulnerabilities before hackers do.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Games Hack</h3>
+                            <p>All types of hacks are available for all types of multiplayer games such as Free Fire, CS2, Valorant and many more.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <h3>UI/UX Design</h3>
+                            <p>User-centered design solutions that combine aesthetics with functionality for engaging experiences.</p>
+                        </div>
+                    </div>
+                </div>
+            `,
+            '/products': `
+                <div class="container">
+                    <h2>My <span class="accent">Projects</span></h2>
+                    <div class="products-grid">
+                        <div class="product-card bronze">
+                            <div class="product-header">
+                                <div class="product-badge">POPULAR</div>
+                                <div class="product-icon">
+                                    <i class="fas fa-gamepad"></i>
+                                </div>
+                                <h3 class="product-title">Games</h3>
+                                <div class="product-price">FF Hacks</div>
+                                <div class="product-period">Explore it baby !!</div>
+                            </div>
+                            <div class="product-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> External</li>
+                                    <li><i class="fas fa-check"></i> Internal</li>
+                                    <li><i class="fas fa-check"></i> Silent Aim</li>
+                                    <li><i class="fas fa-check"></i> Aimkill</li>
+                                    <li><i class="fas fa-check"></i> Bypass Emulator</li>
+                                    <li><i class="fas fa-times"></i> Valorant Internal</li>
+                                    <li><i class="fas fa-times"></i> CS2 External</li>
+                                </ul>
+                            </div>
+                            <div class="product-cta">
+                                <a href="hacks.html" class="product-btn">Get Started</a>
+                            </div>
+                        </div>
+                        <div class="product-card silver">
+                            <div class="product-header">
+                                <div class="product-badge">BEST VALUE</div>
+                                <div class="product-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <h3 class="product-title">Cipher</h3>
+                                <div class="product-price">Emoji Cipher</div>
+                                <div class="product-period">Transform your secrets into emojis !!</div>
+                            </div>
+                            <div class="product-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Visually disguised message</li>
+                                    <li><i class="fas fa-check"></i> Passkey required security</li>
+                                    <li><i class="fas fa-check"></i> Simple copy/paste usage</li>
+                                    <li><i class="fas fa-check"></i> Instant encryption/decryption</li>
+                                    <li><i class="fas fa-check"></i> Works across platforms</li>
+                                    <li><i class="fas fa-times"></i> Limited character support</li>
+                                    <li><i class="fas fa-times"></i> Repetitive emoji patterns</li>
+                                </ul>
+                            </div>
+                            <div class="product-cta">
+                                 <a href="emoji-cipher.html" class="product-btn">Get Started</a>
+                            </div>
+                        </div>
+                        <div class="product-card gold">
+                            <div class="product-header">
+                                <div class="product-badge">PREMIUM</div>
+                                <div class="product-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <h3 class="product-title">Gold</h3>
+                                <div class="product-price">₹39,999</div>
+                                <div class="product-period">one-time payment</div>
+                            </div>
+                            <div class="product-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Everything in Silver</li>
+                                    <li><i class="fas fa-check"></i> Unlimited Pages</li>
+                                    <li><i class="fas fa-check"></i> Advanced E-commerce</li>
+                                    <li><i class="fas fa-check"></i> Custom Web Application</li>
+                                    <li><i class="fas fa-check"></i> Premium Plugins</li>
+                                    <li><i class="fas fa-check"></i> 6 Months Support</li>
+                                    <li><i class="fas fa-check"></i> Priority Development</li>
+                                </ul>
+                            </div>
+                            <div class="product-cta">
+                                <button class="product-btn" onclick="redirectToWhatsApp('Gold Package')">Get Started</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            '/about': `
+                <div class="container">
+                    <h2>About <span class="accent">Me</span></h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <p>I'm Abhishek Sharma, a passionate Cyber Security student and developer dedicated to building secure, high-performance digital experiences. My focus lies in combining creativity and logic — turning complex security concepts into simple, effective, and user-friendly solutions.</p>
+                            <p>My journey into technology began when I built my first project during school, and since then, I’ve been continuously exploring the world of programming, ethical hacking, and system protection. I enjoy understanding how things work beneath the surface — analyzing threats, solving problems, and creating tools that make the digital world safer for everyone.</p>
+                             <p>Every line of code I write is driven by curiosity, discipline, and a mission to design and defend the future of technology.</p>
+                            
+                            <div class="skills">
+                                <div class="skill">
+                                    <div class="skill-name">
+                                        <span>Games Hack</span>
+                                        <span>95%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" data-level="95"></div>
+                                    </div>
+                                </div>
+                                <div class="skill">
+                                    <div class="skill-name">
+                                        <span>UI/UX Design</span>
+                                        <span>90%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" data-level="90"></div>
+                                    </div>
+                                </div>
+                                <div class="skill">
+                                    <div class="skill-name">
+                                        <span>Cyber Security Consulting</span>
+                                        <span>85%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" data-level="85"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about-image">
+                           <img src="assets/profile.jpg" alt="Abhishek Sharma">
+                        </div>
+                    </div>
+                </div>
+            `,
+            '/reviews': `
+                <div class="container">
+                    <h2>Client <span class="accent">Reviews</span></h2>
+                    <div class="reviews-container">
+                        <div class="reviews-slider">
+                            <div class="review-card">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="review-text">"Abhishek transformed our vision into a digital masterpiece. The Gold package was worth every penny - our revenue increased by 300%!"</p>
+                                <div class="reviewer">
+                                    <div class="reviewer-img">SJ</div>
+                                    <div class="reviewer-info">
+                                        <h4>Sarah Johnson</h4>
+                                        <p>CEO, TechSolutions</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-card">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="review-text">"Working with Abhishek was transformative. The attention to detail and technical expertise is unmatched in the industry."</p>
+                                <div class="reviewer">
+                                    <div class="reviewer-img">MC</div>
+                                    <div class="reviewer-info">
+                                        <h4>Michael Chen</h4>
+                                        <p>Founder, AppVenture</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            '/contact': `
+                <div class="container">
+                    <h2>Contact <span class="accent">Me</span></h2>
+                    <div class="contact-content">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h3>Location</h3>
+                                    <p>Rajasthan, India</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h3>Phone</h3>
+                                    <p>+91 91131 50390</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h3>Email</h3>
+                                    <p>abhishekkrsharma1210@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h3>WhatsApp</h3>
+                                    <p>+91 91131 50390</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-form">
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label for="name">Your Name</label>
+                                    <input type="text" id="name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Your Email</label>
+                                    <input type="email" id="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <input type="text" id="subject" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Your Message</label>
+                                    <textarea id="message" class="form-control" required></textarea>
+                                </div>
+                                <button type="submit" class="btn">Send Message via WhatsApp</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            `
+        };
+
+        // 2. Component Initialization Logic (Replaces the original DOMContentLoaded script body)
+        function reInitializeComponents(path) {
+            // A. Mimic page load by scrolling to the top
+            window.scrollTo(0, 0); 
+            
+            // B. Re-attach Contact Form Submission Listener
+            if (path === '/contact') {
+                const contactForm = document.getElementById('contactForm');
+                if (contactForm) {
+                    contactForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        submitContactForm();
+                    });
+                }
+            }
+
+            // C. Video and Audio Controls Setup (logic moved to setupPersistentHeroVideo, but visibility for hero-content is here)
+            if (path === '/') {
+                const heroContent = appContent.querySelector('.hero-content');
+                if (heroContent) {
+                    heroContent.classList.add('visible');
+                }
+            }
+
+
+            // D. Scroll/Intersection Observer Animations Setup (targets all sections)
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Animate skill bars (Triggered by the about-text element)
+                        if (entry.target.classList.contains('about-text')) {
+                            const skillLevels = appContent.querySelectorAll('.skill-level');
+                            setTimeout(() => {
+                                 skillLevels.forEach(level => {
+                                    const width = level.getAttribute('data-level');
+                                    level.style.width = width + '%';
+                                });
+                            }, 50);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe the currently loaded elements inside appContent
+            
+            // Headings
+            const heading = appContent.querySelector('h2');
+            if (heading) observer.observe(heading);
+            
+            // Service cards
+            const serviceCards = appContent.querySelectorAll('.service-card');
+            serviceCards.forEach(card => observer.observe(card));
+            
+            // Product cards
+            const productCards = appContent.querySelectorAll('.product-card');
+            productCards.forEach(card => observer.observe(card));
+            
+            // About elements
+            const aboutText = appContent.querySelector('.about-text');
+            if (aboutText) observer.observe(aboutText);
+            
+            const aboutImage = appContent.querySelector('.about-image');
+            if (aboutImage) observer.observe(aboutImage);
+            
+            // Review cards
+            const reviewCards = appContent.querySelectorAll('.review-card');
+            reviewCards.forEach(card => observer.observe(card));
+            
+            // Contact elements
+            const contactItems = appContent.querySelectorAll('.contact-item');
+            contactItems.forEach(item => observer.observe(item));
+            
+            const contactFormContainer = appContent.querySelector('.contact-form');
+            if (contactFormContainer) observer.observe(contactFormContainer);
+        }
+
+        // ----------------------------------------------------
+        // NEW: PERSISTENT VIDEO/AUDIO SETUP
+        // ----------------------------------------------------
+        function setupPersistentHeroVideo() {
+            const heroVideo = document.getElementById('hero-video');
+            const volumeToggle = document.getElementById('volume-toggle');
+            const playOverlay = document.getElementById('play-overlay');
+            const playButton = document.getElementById('play-btn');
+            const videoBackground = document.querySelector('.video-background');
+            const floatingShapes = document.querySelector('.floating-shapes');
+
+            if (!heroVideo || !volumeToggle || !playOverlay || !playButton) {
+                console.warn("Hero video elements not found. Skipping persistent setup.");
+                return {};
+            }
+
+            let isMuted = true;
+            
+            // Initial state: Muted by default, overlay visible
+            heroVideo.muted = true;
+            volumeToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            volumeToggle.title = 'Toggle Audio (Muted)';
+            
+            // Play Button Logic
+            playButton.addEventListener('click', () => {
+                playOverlay.classList.add('hidden');
+                heroVideo.muted = false;
+                heroVideo.volume = 0.5;
+                isMuted = false;
+                volumeToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+                volumeToggle.title = 'Toggle Audio (Unmuted)';
+                volumeToggle.style.opacity = '1';
+                volumeToggle.style.visibility = 'visible';
+                volumeToggle.style.display = 'flex'; // Ensure volume toggle is shown
+                heroVideo.play().catch(error => console.error('Video play was interrupted:', error));
+            });
+
+            // Volume Toggle Logic
+            volumeToggle.addEventListener('click', () => {
+                isMuted = !isMuted;
+                heroVideo.muted = isMuted;
+
+                if (isMuted) {
+                    volumeToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                    volumeToggle.title = 'Toggle Audio (Muted)';
+                } else {
+                    heroVideo.volume = 0.5; 
+                    volumeToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+                    volumeToggle.title = 'Toggle Audio (Unmuted)';
+                }
+            });
+
+            // Start video on load, muted
+            heroVideo.play().catch(error => console.log('Video initial play (muted) was interrupted:', error));
+
+            return { heroVideo, volumeToggle, playOverlay, videoBackground, floatingShapes };
+        }
+
+        // Run persistent setup once
+        const videoElements = setupPersistentHeroVideo();
+
+
+        // 3. The Router Function (Updated)
+        function router() {
+            // 1. Get the current path from the hash, defaulting to '/'
+            let path = window.location.hash.slice(1) || '/';
+            
+            if (path !== '/' && !path.startsWith('/')) {
+                path = '/' + path;
+            }
+
+            const isHomePage = path === '/';
+            
+            // --- VIDEO AND OVERLAY MANAGEMENT (PERSISTENT) ---
+            if (videoElements.videoBackground) {
+                // MODIFIED: Show video background and floating shapes on ALL pages for seamless play
+                videoElements.videoBackground.style.display = 'block';
+                videoElements.floatingShapes.style.display = 'block';
+                
+                // Show/Hide Play Overlay
+                if (isHomePage) {
+                    // Only show the overlay on the home page
+                    videoElements.playOverlay.style.display = 'flex';
+                    
+                    // Re-show volume toggle only if it was already unmuted/interacted with (overlay is hidden)
+                    const isOverlayHidden = videoElements.playOverlay.classList.contains('hidden');
+                    if (isOverlayHidden) {
+                         videoElements.volumeToggle.style.opacity = '1';
+                         videoElements.volumeToggle.style.visibility = 'visible';
+                         videoElements.volumeToggle.style.display = 'flex';
+                    } else {
+                        // Hide volume toggle if the overlay is visible and waiting for interaction
+                        videoElements.volumeToggle.style.opacity = '0';
+                        videoElements.volumeToggle.style.visibility = 'hidden';
+                        videoElements.volumeToggle.style.display = 'none';
+                    }
+                    
+                } else {
+                    // MODIFIED: On non-home pages, hide the initial overlay permanently
+                    videoElements.playOverlay.style.display = 'none';
+                    
+                    // MODIFIED: Show the volume toggle on all non-home pages for persistent audio control
+                    videoElements.volumeToggle.style.opacity = '1';
+                    videoElements.volumeToggle.style.visibility = 'visible';
+                    videoElements.volumeToggle.style.display = 'flex';
+                }
+            }
+            // ------------------------------------------------
+            
+            // Footer Visibility Control
+            const footerContainer = document.getElementById('footer-container');
+            if (footerContainer) {
+                // Show footer only on the contact page or a 404
+                if (path === '/contact' || !routes[path]) {
+                    footerContainer.style.display = 'block';
+                } else {
+                    footerContainer.style.display = 'none';
+                }
+            }
+            
+            // 2. Fetch the content template, defaulting to home if not found
+            const content = routes[path];
+            
+            if (content) {
+                // 3. Generate navigation buttons HTML (empty string for home page '/')
+                const navButtonsHTML = path !== '/' ? getPageNavigationHTML(path) : '';
+
+                // 4. Load the new content wrapped in its proper section tag, adding navigation buttons below the container
+                let sectionId = path === '/' ? 'home' : path.slice(1);
+                appContent.innerHTML = `<section id="${sectionId}">${content}${navButtonsHTML}</section>`;
+                
+                // 5. Re-initialize scripts and animations for the new content
+                reInitializeComponents(path);
+                
+            } else {
+                // Handle 404/Not Found
+                const navButtonsHTML = getPageNavigationHTML(pageOrder[pageOrder.length - 1]); // Show last button if possible
+                appContent.innerHTML = `<section id="404" class="container" style="text-align:center; padding-top: 20vh; min-height: 100vh;"><h2>404</h2><p>Page Not Found for route: ${path}</p><a href="#/" class="btn">Go Home</a></section>`;
+            }
+        }
+
+        // 4. Setup event listeners for the router
+        window.addEventListener('hashchange', router);
+        window.addEventListener('load', router);
+
+    </script>
+</body>
+</html>

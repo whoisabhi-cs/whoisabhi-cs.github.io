@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek | Free Fire Hack Showcase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles (Copied from index.html) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #ffffff;
+            /* New Red Theme Colors */
+            --accent: #FF0000; /* Vibrant Red */
+            --accent-light: #FF3333;
+            --accent-dark: #B30000;
+            --gray: #1a1a1a;
+            --light-gray: #2a2a2a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            /* CHANGED: Background to black or transparent to let video show through */
+            background: #000000;
+            color: var(--secondary);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* NEW: BACKGROUND VIDEO STYLES - MODIFIED FOR CLEARNESS */
+        #background-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            /* CHANGED: z-index to -1 to be behind content */
+            z-index: -1;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+        }
+        /* END NEW STYLES */
+
+        /* NEW: SOUND PROMPT OVERLAY STYLES */
+        #sound-prompt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9); /* Dark background */
+            z-index: 9999; /* Ensure it's on top of everything */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--secondary);
+            font-size: 2rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: opacity 0.5s ease;
+        }
+        #sound-prompt-overlay p {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            /* Red Accent Glow */
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+        }
+        #sound-prompt-overlay:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        section {
+            padding: 120px 20px;
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        h1 {
+            font-size: 5rem;
+            margin-bottom: 25px;
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), #FF4D4D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 4rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            opacity: 1;
+            transform: none;
+            transition: none;
+            text-align: left;
+        }
+        
+        /* Center H2 on the Showcase Header */
+        #showcase-header h2 {
+            text-align: center;
+            width: 100%;
+        }
+
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 150px;
+            height: 5px;
+            /* Red Accent */
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            border-radius: 5px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), var(--accent-dark));
+            color: var(--secondary);
+            border: none;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            /* Red Accent Shadow */
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent-dark), var(--accent));
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            /* Red Accent Shadow */
+            box-shadow: 0 15px 25px rgba(255, 0, 0, 0.4);
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .accent {
+            /* Red Accent */
+            background: linear-gradient(45deg, var(--accent), #FF4D4D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glassmorphism Navigation - Opaque Black */
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%; padding: 25px 0; z-index: 1000;
+            background: var(--primary); /* Opaque Black */
+            backdrop-filter: none; -webkit-backdrop-filter: none;
+            border-bottom: 1px solid rgba(255, 0, 0, 0.2); transition: all 0.4s ease;
+        }
+        nav.scrolled { 
+            padding: 15px 0; 
+            background: var(--primary); /* Opaque Black when scrolled */
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.9); /* Add shadow for better separation */
+            border-bottom: none; /* Remove border when scrolled as the box-shadow is enough */
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 30px; }
+        .logo { font-size: 2.2rem; font-weight: 900; color: var(--secondary); text-decoration: none; display: flex; align-items: center; }
+        .logo span { background: linear-gradient(45deg, var(--accent), #FF4D4D); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-left: 5px; }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 40px; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; transition: all 0.3s ease; position: relative; padding: 5px 0; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-dark)); transition: width 0.4s ease; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover::after { width: 100%; }
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
+
+        /* Showcase Item Styles - Fully Transparent Backgrounds */
+        .hack-product-item {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .hack-product-item:nth-child(even),
+        .hack-product-item:nth-child(odd) {
+            background: transparent;
+        }
+
+        .hack-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .hack-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hack-text {
+            padding-right: 20px;
+        }
+
+        /* Hack Video Container - Fully Transparent */
+        .hack-video {
+            position: relative;
+            min-height: 400px;
+            width: 100%;
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            /* Red Accent Border */
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Keep shadow for definition */
+        }
+        
+        .hack-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* CONTACT SECTION STYLES - Fully Transparent */
+        #contact {
+             padding-top: 50px;
+             min-height: auto;
+             background: transparent; /* Fully transparent */
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 50px;
+            align-items: flex-start;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        /* Contact Item - Fully Transparent */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: transparent;
+            backdrop-filter: none;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.15);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            min-width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 0, 0, 0.1);
+            border-radius: 50%;
+        }
+        
+        .contact-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .contact-item p {
+            font-size: 1rem;
+            margin-bottom: 0;
+            color: #ccc;
+            font-weight: 300;
+        }
+        
+        /* Contact Form Container - Fully Transparent */
+        .contact-form {
+            padding: 40px;
+            background: transparent;
+            backdrop-filter: none;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 1rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5); /* Keep a dark background on input fields for readability */
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 10px;
+            color: var(--secondary);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+
+        /* Footer - Semi-transparent black with blur for readability */
+        footer {
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+            backdrop-filter: blur(5px); /* Add a subtle blur to help readability */
+            -webkit-backdrop-filter: blur(5px);
+            padding: 80px 0 40px; 
+            border-top: 1px solid rgba(255, 0, 0, 0.2);
+        }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; margin-bottom: 50px; }
+        .footer-column h3 { font-size: 1.5rem; margin-bottom: 25px; position: relative; display: inline-block; }
+        .footer-column h3::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 50px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-dark)); }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #aaa; text-decoration: none; transition: all 0.3s ease; }
+        .footer-links a:hover { color: var(--accent); padding-left: 8px; }
+        .social-links { display: flex; gap: 15px; margin-top: 25px; }
+        .social-link { width: 45px; height: 45px; background: rgba(255, 255, 255, 0.03); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--secondary); text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .social-link:hover { background: linear-gradient(45deg, var(--accent), var(--accent-dark)); color: var(--secondary); transform: translateY(-5px); }
+        .copyright { text-align: center; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: #aaa; font-size: 1rem; }
+
+
+        /* Animations (minified) */
+        @keyframes float { 0% { transform: translateY(0) rotate(0deg) scale(1); } 50% { transform: translateY(-20px) rotate(180deg) scale(1.1); } 100% { transform: translateY(0) rotate(360deg) scale(1); } }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hack-content {
+                grid-template-columns: 1fr;
+            }
+            .hack-text {
+                padding-right: 0;
+            }
+             /* Ensure mobile layout displays video before text in all blocks */
+            .hack-content > div {
+                 order: initial !important; 
+            }
+            .hack-video {
+                 min-height: 300px;
+            }
+            
+            /* Contact Section Responsive */
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            .contact-form {
+                order: -1; /* Place form above info on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="sound-prompt-overlay" onclick="startVideoSound()">
+        <p>Click to Continue and Enable Sound</p>
+        <p style="font-size: 1.2rem; font-weight: 300; margin-top: 0;">(Tap anywhere on the screen)</p>
+    </div>
+    
+    <video autoplay loop id="background-video">
+        <source src="assets\background-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <a href="https://wa.me/919113150390?text=Hi%20Abhishek%2C%20I%20visited%20your%20website%20and%20would%20like%20to%20discuss%20a%20project." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">whoisabhi<span>.cs</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="#showcase">Hacks</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <section id="showcase-header">
+        <div class="container">
+            <h1 style="margin-top: 50px;">Free Fire <span class="accent">Products</span></h1>
+            <p style="max-width: 800px; margin: 0 auto 100px; text-align: center; font-size: 1.4rem;">
+                Explore our current catalog of premium, low-detection cheats. Each section includes a short clip demonstration of the features in action.
+            </p>
+        </div>
+    </section>
+
+    <section class="hack-product-item" id="silent-aim" style="padding-top: 0;">
+        <div class="container">
+            <h2><span class="accent">External</span> Hack</h2>
+            <div class="hack-content">
+                <div class="hack-video" style="order: 1;">
+                    <video controls autoplay loop muted style="width: 100%; height: 100%; object-fit: cover;" poster="path/to/silent-aim-placeholder.jpg">
+                        <source src="path/to/silent-aim-clip.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="hack-text" style="order: 2;">
+                    <p>Panel Functions :-
+External Aimbot (Head/Drag/Ai) Ingame,
+Aimfov & No Recoil,
+Scope Xit & Scope Tracking,
+Rage Damage,
+Glitch Fire & Fast Reload,
+Sniper (Scope/Aim/Switch/Tracking/DelayFix),
+Chams (HoloGram/Blue/Red/Wall/Box/Moco/line),
+Bypass Widnows Security,
+Bypass AntiVirus,
+Fast Update,
+Save Login Information,
+Auto Login,
+101 % Anti Ban,
+Customize HotKey Features (Keybinds),
+Show Enabled Functions,
+Stream Mode Available,</p>
+                    <p>Extra Functions :-
+DNS Clean,,
+Temp Clean,,
+Pc Optimize,,
+Lite Pc Bypass,,
+Pin To Top,,
+Discord RPC (On/Off),,
+Change Color Of Ui,,
+Rainbow Color.</p>
+                    <a href="https://wa.me/919113150390?text=I'm%20interested%20in%20the%20External%20Hack%20I%20saw%20on%20your%20website." class="btn">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hack-product-item" id="wall-hack">
+        <div class="container">
+            <h2><span class="accent">Internal</span> Hack</h2>
+            <div class="hack-content">
+                <div class="hack-text" style="order: 1;">
+                    <p>Panel Functions :-
+Aimbot ( HeX/Rage/Legit),
+Aimfov 360,
+No Recoil,
+Ignore Knocked,
+Aimfov Size Adjustment,
+Smoothness Adjustment,
+Bypass Widnows Security,
+Bypass AntiVirus,
+Fast Update,
+Save Login Information,
+Auto Login,
+101 % Anti Ban,
+Customize HotKey Features (Keybinds),
+Stream Mode Available</p>
+                    <p>Esp Functions :-
+ESP Line,
+ESP Line Position,
+ESP Box,
+ESP Name,
+ESP Health,
+ESP Skeleton,
+ESP Crosshair,
+Crosshair Size Adjustment,
+Crosshair Rotation Speed</p>
+                    <a href="https://wa.me/919113150390?text=I'm%20interested%20in%20the%20Internal%20Hack%20I%20saw%20on%20your%20website." class="btn">Inquire Now</a>
+                </div>
+                <div class="hack-video" style="order: 2;">
+                    <video controls autoplay loop muted style="width: 100%; height: 100%; object-fit: cover;" poster="path/to/wall-hack-placeholder.jpg">
+                        <source src="path/to/wall-hack-clip.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="hack-product-item" id="speed-hack">
+        <div class="container">
+            <h2><span class="accent">Silent</span> Aim</h2>
+            <div class="hack-content">
+                <div class="hack-video" style="order: 1;">
+                    <video controls autoplay loop muted style="width: 100%; height: 100%; object-fit: cover;" poster="path/to/speed-hack-placeholder.jpg">
+                        <source src="path/to/speed-hack-clip.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="hack-text" style="order: 2;">
+                    <p>Panel Functions :-
+Silent Aim V1,
+Silent Aim V2,
+Aimfov 360,
+Up Player,
+Down Player,
+Spy Enemy,
+Aimbot Rage,
+AimBot Ai,
+No Recoil,
+Speed Timer,
+Camera Right,
+Ignore Knocked,
+Aimfov Size Adjustment,
+Smoothness Adjustment</p>
+                    <p>Esp Functions :-
+ESP Line,
+ESP Line Position,
+ESP Box,
+ESP Name,
+ESP Health,
+ESP Skeleton,
+ESP Crosshair,
+Crosshair Size Adjustment,
+Crosshair Rotation Speed</p>
+                    <a href="https://wa.me/919113150390?text=I'm%20interested%20in%20the%20Silent%20Aim%20I%20saw%20on%20your%20website." class="btn">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hack-product-item" id="teleport-hack">
+        <div class="container">
+            <h2><span class="accent">Aim</span> Kill</h2>
+            <div class="hack-content">
+                <div class="hack-text" style="order: 1;">
+                    <p>Panel Functions :-
+Enable all,
+Aimkill (360),
+Telekill (10m),
+Up Player,
+Shake Enemy,
+Kill Closest,
+Speed Joystick,
+Ghost (10m),
+Ultra Switch,
+Auto Switch,
+Down kill,
+Climb up</p>
+                    <p>Esp Functions :-
+ESP Line,
+ESP Line Position,
+ESP Box,
+ESP Name,
+ESP Health,
+ESP Skeleton</p>
+                    <a href="https://wa.me/919113150390?text=I'm%20interested%20in%20the%20Aim%20Kill%20I%20saw%20on%20your%20website." class="btn">Inquire Now</a>
+                </div>
+                <div class="hack-video" style="order: 2;">
+                    <video controls autoplay loop muted style="width: 100%; height: 100%; object-fit: cover;" poster="path/to/teleport-hack-placeholder.jpg">
+                        <source src="path/to/teleport-hack-clip.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hack-product-item" id="custom-lobby">
+        <div class="container">
+            <h2><span class="accent">Bypass</span> Emulator</h2>
+            <div class="hack-content">
+                <div class="hack-video" style="order: 1;">
+                    <video controls autoplay loop muted style="width: 100%; height: 100%; object-fit: cover;" poster="path/to/lobby-hack-placeholder.jpg">
+                        <source src="path/to/lobby-hack-clip.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="hack-text" style="order: 2;">
+                    <p>Panel Functions :-
+Emulator Detection Bypass,
+Emulator Bypass,
+Architecture (32/64bit),
+Internet (ON/OFF)</p>
+                    <p>Extra Functions :-
+Scanner Priority,
+Streamer Mode,
+Pin on Top,
+Temp Clean,
+Disable Activation Sound</p>
+                    <a href="https://wa.me/919113150390?text=I'm%20interested%20in%20the%20Bypass%20Emulator%20I%20saw%20on%20your%20website." class="btn">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>Ready to <span class="accent">Level Up?</span></h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="contactForm" onsubmit="return submitContactForm();">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Game/Hack You Need</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message via WhatsApp</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h3>Instant Contact</h3>
+                            <p>+91 91131 50390</p>
+                        </div>
+                    </div>
+                     <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email Support</h3>
+                            <p>abhishekkrsharma1210@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Abhishek sharma</h3>
+                    <p>Creating next-level digital experiences that push boundaries. Let's build the future together.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/abhishek.sharma.212991" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/whoisxbhi?igsh=MTJxa3VoazF4NHllOA==" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><li><a href="#showcase">Hacks</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul class="footer-links">
+                        <li><a href="#silent-aim">Silent Aim</a></li>
+                        <li><a href="#wall-hack">Wall Hack (ESP)</a></li>
+                        <li><a href="#speed-hack">Speed Hack</a></li> <li><a href="#teleport-hack">Teleport Hack</a></li> <li><a href="#custom-lobby">Custom Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+919113150390">+91 98765 43210</a></li>
+                        <li><a href="https://wa.me/919113150390">WhatsApp: +91 91131 50390</a></li>
+                        <li><a href="mailto:abhishekkrsharma1210@gmail.com">abhishekkrsharma1210@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Abhishek. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // NEW: Function to enable video sound and remove the prompt overlay
+        function startVideoSound() {
+            const video = document.getElementById('background-video');
+            const overlay = document.getElementById('sound-prompt-overlay');
+            
+            // 1. Unmute the video
+            video.muted = false;
+
+            // 2. Attempt to play the video (crucial for some mobile browsers)
+            video.play().catch(error => {
+                // Ignore any "play() failed" error since we are already inside a click handler
+                console.warn("Autoplay with sound failed, but video is now unmuted.", error);
+            });
+            
+            // 3. Fade out and hide the overlay
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 500); // Wait for the fade out transition
+        }
+        
+        // WhatsApp Integration Functions
+        function redirectToWhatsApp(packageName = '') {
+            const phoneNumber = '919113150390';
+            let message = 'Hi Abhishek, I visited your website and would like to discuss a project.';
+            
+            if (packageName) {
+                message = `Hi Abhishek, I'm interested in the ${packageName}. Can you provide more details?`;
+            }
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+        }
+
+        function submitContactForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            const phoneNumber = '919113150390';
+            const whatsappMessage = `New Contact Form Submission:%0A%0AName: ${name}%0AEmail: ${email}%0ASubject: ${subject}%0AMessage: ${message}`;
+            
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+            
+            return false; // Prevent default form submission
+        }
+
+        // Navigation scroll effect (Keep this for the navbar sticky behavior)
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll animations for hack content
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const hackContents = document.querySelectorAll('.hack-content');
+            hackContents.forEach(content => observer.observe(content));
+            
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) observer.observe(contactForm);
+        });
+    </script>
+</body>
+</html>
