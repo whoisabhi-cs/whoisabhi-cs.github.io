@@ -1273,15 +1273,20 @@
     
 /* Accordion Projects */
 .accordion-header{
-cursor:pointer;
-padding:20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border:1px solid rgba(255,0,0,0.2);
-margin-top:20px;
-border-radius:15px;
-transition:0.3s;
+    cursor:pointer;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:20px;
+    border-radius:15px;
+    transition:0.3s;
+
+    /* 🔥 Add this */
+    background: rgba(0, 0, 0, 0.75);  /* more opaque */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 0, 0, 0.3);
 }
 
 .accordion-header:hover{
