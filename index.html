@@ -215,8 +215,8 @@
             z-index: 1000;
             /* MODIFIED: Darker, more opaque black glass */
             background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             /* Red Accent Border */
             border-bottom: 1px solid rgba(255, 0, 0, 0.2);
             transition: all 0.4s ease;
@@ -335,10 +335,13 @@
             pointer-events: none; /* Allows clicks to pass through to elements beneath */
         }
 
-        #hero-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        #hero-video{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            transform: translateZ(0);
+            will-change: transform;
+            backface-visibility: hidden;
         }
         
         /* NEW: Play Overlay for Unmute Interaction - MOVED TO PERSISTENT LAYER */
@@ -512,8 +515,8 @@
         .service-card {
             /* MODIFIED: Less transparent, more opaque black glass */
             background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             /* Red Accent Border */
             border: 1px solid rgba(255, 0, 0, 0.2);
             padding: 50px 40px;
@@ -584,8 +587,8 @@
         .product-card {
             /* MODIFIED: Less transparent, more opaque black glass */
             background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             /* Red Accent Border */
             border: 1px solid rgba(255, 0, 0, 0.2);
             border-radius: 25px;
@@ -755,8 +758,8 @@
             height: 600px;
             /* MODIFIED: Less transparent, more opaque black glass */
             background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             /* Red Accent Border */
             border: 1px solid rgba(255, 0, 0, 0.2);
             border-radius: 25px;
@@ -842,8 +845,8 @@
             min-width: 400px;
             /* MODIFIED: Less transparent, more opaque black glass */
             background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             /* Red Accent Border */
             border: 1px solid rgba(255, 0, 0, 0.2);
             padding: 40px;
@@ -940,8 +943,8 @@
             height: 70px;
             /* MODIFIED: Less transparent, more opaque black glass */
             background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             /* Red Accent Border */
             border: 1px solid rgba(255, 0, 0, 0.2);
             border-radius: 50%;
@@ -959,8 +962,8 @@
         .contact-form {
             /* MODIFIED: Less transparent, more opaque black glass */
             background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             /* Red Accent Border */
             border: 1px solid rgba(255, 0, 0, 0.2);
             padding: 50px 40px;
@@ -1185,7 +1188,7 @@
                 width: 100%;
                 /* MODIFIED: Darker Mobile Menu */
                 background: rgba(0, 0, 0, 0.98);
-                backdrop-filter: blur(15px);
+                backdrop-filter: blur(10px);
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
@@ -1346,7 +1349,7 @@ transform:translateY(0);
         <button id="play-btn" class="btn"><i class="fas fa-play"></i> Enter Site with Sound</button>
     </div>
     <div class="video-background">
-        <video id="hero-video" autoplay loop muted playsinline poster="assets/video-fallback.jpg">
+        <video id="hero-video" autoplay loop muted playsinline preload="auto" poster="assets/video-fallback.jpg">
             <source src="assets/hero-video.mp4" type="video/mp4">
             <source src="assets/hero-video.webm" type="video/webm">
             Your browser does not support the video tag.
@@ -1436,7 +1439,7 @@ transform:translateY(0);
         particlesJS('particles-js', {
             particles: {
                 number: {
-                    value: 80,
+                    value: 45,
                     density: {
                         enable: true,
                         value_area: 800
