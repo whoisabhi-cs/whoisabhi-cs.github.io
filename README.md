@@ -16,12 +16,9 @@ I’m passionate about exploring how systems work, securing digital environments
 ---
 
 ## 🛠 Skills
-- Python
-- HTML / CSS / JavaScript
-- Networking Fundamentals
-- Linux
-- Cyber Security Basics
-- Git & GitHub
+- Cybersecurity
+- Programming ( C, C++, JAVA, PYTHON )
+- Core Computer Science
 
 ---
 
