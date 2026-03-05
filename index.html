@@ -1686,9 +1686,9 @@ transform:translateY(0);
 <i class="fas fa-chevron-down arrow"></i>
 </div>
 <div class="accordion-content products-grid">
-    ${generateProjectCard("PortScan","Port Spectre","Open Port Detection","fas fa-network-wired")}
-    ${generateProjectCard("WebScan","Vuln Sight","Web Security","fas fa-shield-virus")}
-    ${generateProjectCard("LogX","Threat Lens","Log Intelligence","fas fa-chart-line")}
+    ${generateProjectCard("PortScan","Port Spectre","Open Port Detection","fas fa-network-wired","https://github.com/whoisabhi-cs/network-port-scanner")}
+    ${generateProjectCard("WebScan","Vuln Sight","Web Security","fas fa-shield-virus","https://github.com/whoisabhi-cs/web-vulnerability-scanner")}
+    ${generateProjectCard("LogX","Threat Lens","Log Intelligence","fas fa-chart-line","#")}
 </div>
 </div>
 
@@ -1698,9 +1698,9 @@ transform:translateY(0);
 <i class="fas fa-chevron-down arrow"></i>
 </div>
 <div class="accordion-content products-grid">
-    ${generateProjectCard("CipherGen","Password Tool","Encryption Utility","fas fa-key")}
+    ${generateProjectCard("CipherGen","Pass Tool","Encryption Utility","fas fa-key")}
     ${generateProjectCard("API Forge","REST API","Backend Service","fas fa-server")}
-    ${generateProjectCard("AlgoViz","DSA Visualizer","Algorithm Tool","fas fa-project-diagram")}
+    ${generateProjectCard("AlgoViz","DSA Visual","Algorithm Tool","fas fa-project-diagram")}
 </div>
 </div>
 
@@ -1710,7 +1710,7 @@ transform:translateY(0);
 <i class="fas fa-chevron-down arrow"></i>
 </div>
 <div class="accordion-content products-grid">
-    ${generateProjectCard("CPU Sim","Scheduler","OS Simulation","fas fa-microchip")}
+    ${generateProjectCard("CPU Sim","Scheduler concept","OS Simulation","fas fa-microchip")}
     ${generateProjectCard("MiniDB","Database System","DBMS Project","fas fa-database")}
     ${generateProjectCard("NetLab","Network Simulator","Networking Tool","fas fa-network-wired")}
 </div>
@@ -2023,7 +2023,7 @@ transform:translateY(0);
 
 
         
-function generateProjectCard(title, name, tag, icon){
+function generateProjectCard(title, name, tag, icon, link){
 return `
 <div class="product-card silver">
 <div class="product-header">
@@ -2035,10 +2035,8 @@ return `
 <div class="product-period">${tag}</div>
 </div>
 <div class="product-cta">
-<a href="https://github.com/whoisabhi-cs/network-port-scanner" 
-   target="_blank" 
-   class="product-btn">
-   <i class="fab fa-github"></i> View on GitHub
+<a href="${link}" target="_blank" class="product-btn">
+<i class="fab fa-github"></i> View on GitHub
 </a>
 </div>
 </div>
