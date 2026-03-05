@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Abhishek Sharma</h1>
 
 <p align="center">
-Cyber Security Enthusiast 🔐 | BCA Student
+🔐 Cyber Security Enthusiast | BCA Student
 </p>
 
 <p align="center">
@@ -20,42 +20,74 @@ Cyber Security Enthusiast 🔐 | BCA Student
 
 ---
 
-## 🛠 Skills
+# 🛠 Skills
 
-<p align="center">
-<img src="https://skillicons.dev/icons?i=python,html,css,js,linux,git,github" />
+## 🔐 Cyber Security
+
+- Network Security  
+- Ethical Hacking Basics  
+- Vulnerability Analysis  
+- Security Tools  
+
+<p>
+<img src="https://skillicons.dev/icons?i=linux,bash" />
 </p>
 
 ---
 
-## 📂 Projects
+## 💻 Programming
 
-- 🔎 Network Scanner  
-- 🔑 Password Strength Checker  
-- 🌐 Personal Portfolio Website  
-- 🛡 Security Learning Tools  
+- Python  
+- JavaScript  
+- HTML / CSS  
+- Scripting  
+
+<p>
+<img src="https://skillicons.dev/icons?i=python,js,html,css" />
+</p>
+
+---
+
+## 🧠 Core Computer Science
+
+- Data Structures (Learning)  
+- Networking Fundamentals  
+- Operating Systems Basics  
+- Git & GitHub  
+
+<p>
+<img src="https://skillicons.dev/icons?i=git,github" />
+</p>
+
+---
+
+# 📂 Projects
+
+- 🔎 **Multitreaded Port Scanner**
+- 🔑 **Web Vulnerability Scanner with scoring**
+- 🌐 **Personal Portfolio Website**
 
 More projects coming soon 🚀
 
 ---
 
-## 📊 GitHub Stats
+# 📊 GitHub Stats
 
 <p align="center">
-<img src="https://github-readme-stats.vercel.app/api?username=whoisabhi-cs&show_icons=true&theme=tokyonight">
+<img src="https://github-readme-stats.vercel.app/api?username=whoisabhi-cs&show_icons=true&theme=tokyonight" />
 </p>
 
 ---
 
-## 🔥 GitHub Streak
+# 🔥 GitHub Streak
 
 <p align="center">
-<img src="https://streak-stats.demolab.com/?user=whoisabhi-cs&theme=tokyonight">
+<img src="https://streak-stats.demolab.com/?user=whoisabhi-cs&theme=tokyonight" />
 </p>
 
 ---
 
-## 👀 Profile Visitors
+# 👀 Profile Visitors
 
 <p align="center">
 <img src="https://komarev.com/ghpvc/?username=whoisabhi-cs&label=Profile%20views&color=blue&style=flat">
@@ -63,11 +95,11 @@ More projects coming soon 🚀
 
 ---
 
-## 🌍 Connect With Me
+# 🌍 Connect With Me
 
 - GitHub: https://github.com/whoisabhi-cs  
 - Portfolio: https://whoisabhi-cs.github.io  
 
 ---
 
-⚡ *"Crafting logic into reality, one line of code at a time."*
+⚡ **"Crafting logic into reality, one line of code at a time."**
