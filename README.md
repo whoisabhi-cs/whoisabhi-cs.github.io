@@ -1,40 +1,73 @@
-# Hi, I'm Abhishek Sharma 👋
+<h1 align="center">Hi 👋, I'm Abhishek Sharma</h1>
 
-🔐 **Cyber Security Enthusiast | BCA Student**
+<p align="center">
+Cyber Security Enthusiast 🔐 | BCA Student
+</p>
 
-I’m passionate about exploring how systems work, securing digital environments, and building practical tools that combine development with cybersecurity.
+<p align="center">
+<img src="https://readme-typing-svg.herokuapp.com/?lines=Cyber%20Security%20Student;Python%20Developer;Learning%20Ethical%20Hacking;Building%20Security%20Tools&center=true&width=500&height=50">
+</p>
 
 ---
 
 ## 🚀 About Me
+
 - 🎓 BCA Student specializing in **Cyber Security**
 - 🔐 Interested in **Ethical Hacking, Network Security & System Protection**
-- 💻 Building projects in **Python, Web Development & Security Tools**
-- 📚 Currently learning **Networking, Security Concepts & Vulnerability Analysis**
-- 🎯 Goal: Work as a **Cyber Security Professional**
+- 💻 Building projects using **Python & Web Technologies**
+- 📚 Currently learning **Linux, Networking & Security Concepts**
+- 🎯 Goal: Become a **Cyber Security Professional**
 
 ---
 
 ## 🛠 Skills
-- Cybersecurity
-- Programming ( C, C++, JAVA, PYTHON )
-- Core Computer Science
+
+<p align="center">
+<img src="https://skillicons.dev/icons?i=python,html,css,js,linux,git,github" />
+</p>
 
 ---
 
 ## 📂 Projects
-- 🔎 **Multithreaded Port Scanner**
-- 🔑 **Web Vulnerability Scanner with scoring**
-- 🌐 **Personal Portfolio Website**
 
-*(More projects coming soon)*
+- 🔎 Network Scanner  
+- 🔑 Password Strength Checker  
+- 🌐 Personal Portfolio Website  
+- 🛡 Security Learning Tools  
+
+More projects coming soon 🚀
+
+---
+
+## 📊 GitHub Stats
+
+<p align="center">
+<img src="https://github-readme-stats.vercel.app/api?username=whoisabhi-cs&show_icons=true&theme=tokyonight">
+</p>
+
+---
+
+## 🔥 GitHub Streak
+
+<p align="center">
+<img src="https://streak-stats.demolab.com/?user=whoisabhi-cs&theme=tokyonight">
+</p>
+
+---
+
+## 👀 Profile Visitors
+
+<p align="center">
+<img src="https://komarev.com/ghpvc/?username=whoisabhi-cs&label=Profile%20views&color=blue&style=flat">
+</p>
 
 ---
 
 ## 🌍 Connect With Me
-- GitHub: https://github.com/whoisabhi-cs
-- LinkedIn: *(Soon...)*
+
+- GitHub: https://github.com/whoisabhi-cs  
+- Portfolio: https://whoisabhi-cs.github.io  
 
 ---
 
-⚡ **"Crafting logic into reality, one line of code at a time."**
+⚡ *"Crafting logic into reality, one line of code at a time."*
