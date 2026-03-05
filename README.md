@@ -103,7 +103,6 @@ More projects coming soon 🚀
 ---
 
 ⚡ **"Crafting logic into reality, one line of code at a time."**
-
 ## 🐍 Contribution Snake
 
-![snake animation](https://raw.githubusercontent.com/whoisabhi-cs/whoisabhi-cs/output/github-contribution-grid-snake.svg)
+![Snake animation](https://raw.githubusercontent.com/whoisabhi-cs/whoisabhi-cs/output/github-contribution-grid-snake.svg)
